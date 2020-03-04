@@ -184,12 +184,7 @@ namespace RuneGear.General
         {
             try
             {
-                DirectorySecurity security = new DirectorySecurity();
-                security.SetAccessRule(new FileSystemAccessRule(
-                    new SecurityIdentifier(WellKnownSidType.WorldSid, null), FileSystemRights.FullControl,
-                    InheritanceFlags.ObjectInherit | InheritanceFlags.ContainerInherit,
-                    PropagationFlags.NoPropagateInherit, AccessControlType.Allow));
-                Directory.CreateDirectory(folder, security);
+                Directory.CreateDirectory(folder);
 
                 return true;
             }

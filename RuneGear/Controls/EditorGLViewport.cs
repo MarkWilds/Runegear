@@ -40,9 +40,6 @@ namespace RuneGear.Controls
             TabIndex = 0;
 
             graphics = new Graphics.Graphics();
-            viewports = new BaseViewport[VIEWPORT_COUNT];
-            capturedViewport = null;
-
             InitializeComponent();
             InitializeViewports();
         }
@@ -72,6 +69,7 @@ namespace RuneGear.Controls
         /// </summary>
         private void InitializeViewports()
         {
+            viewports = new BaseViewport[VIEWPORT_COUNT];
             viewports[0] = new PerspViewport(this.PointToScreen(this.Location));
             viewports[1] = new OrthoViewport(BaseViewport.ViewportTypes.TOP);
             viewports[2] = new OrthoViewport(BaseViewport.ViewportTypes.SIDE);
@@ -140,10 +138,13 @@ namespace RuneGear.Controls
             int halfWidth = Size.Width / 2;
             int halfHeight = Size.Height / 2;
 
-            viewports[0].OnResized(0, 0, halfWidth, halfHeight);
-            viewports[1].OnResized(halfWidth, 0, halfWidth, halfHeight);
-            viewports[2].OnResized(0, halfHeight, halfWidth, halfHeight);
-            viewports[3].OnResized(halfWidth, halfHeight, halfWidth, halfHeight);
+            if (viewports == null)
+                return;
+
+            viewports[0]?.OnResized(0, 0, halfWidth, halfHeight);
+            viewports[1]?.OnResized(halfWidth, 0, halfWidth, halfHeight);
+            viewports[2]?.OnResized(0, halfHeight, halfWidth, halfHeight);
+            viewports[3]?.OnResized(halfWidth, halfHeight, halfWidth, halfHeight);
         }
 
         /// <summary>
