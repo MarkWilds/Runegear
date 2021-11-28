@@ -10,6 +10,8 @@ Migrating the project to .net Core for a 1.0 release.
 	
 ![alt text](runegear_old.png "Old image of Runegear CSG editor")  
 
+This project is rather inactive, might I suggest you look at https://trenchbroom.github.io/  
+
 #### Goal
 The goal is to 'finish' this project and create a basic oldschool CSG editor with an engine agnostic file format.
 
